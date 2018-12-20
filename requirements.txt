@@ -1,0 +1,4 @@
+Django==2.1.4
+Keras==2.2.4
+Pillow==5.3.0
+tensorflow==1.12.0

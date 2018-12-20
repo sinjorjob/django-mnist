@@ -1,0 +1,30 @@
+<!-- 親テンプレートを読み込む-->
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+<div class="content-wrapper">
+<div class="container-fluid">
+<div class="card mb-3">
+<div class="card-header">
+<h2><b>手書き文字判定AIアプリ</b></h2></div>
+<div class="card-body">
+<div class="mt-5 text-center">
+<div class="alert alert-primary alert-dismissible" role="alert">
+<h3 class=""><b>判定結果</b></h3>
+<hr>
+<div class="mt-5 text-center">
+{% for data in result %}
+<div class="alert alert-warning">
+<img src="data:image/jpg;base64,{{data.0}}" width="72" height="72" />
+<p class="lead">【AIの判定結果】<br>画像は<font color=red><b>{{ data.1 }}</font></b>です。</p>
+</div>
+{% endfor %}
+<a class="btn btn-lg btn-secondary"  href="{% url 'index' %}">戻る</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+<!-- 親テンプレートを読み込む-->
+{% extends './base.html' %}
+{% load static %}
+{% block content %}
+<div class="content-wrapper">
+<div class="container-fluid">
+<div class="mt-5 text-center">
+<div class="alert alert-primary alert-dismissible" role="alert">
+<p style="margin-bottom:1em;"><h3><b>手書き文字判定AIアプリの説明</b></h3></p>
+<hr>
+<h4>
+<ol>
+<li style="margin-bottom:1em;" align="left">数字(0～9)を手書きしたjpgファイル画像をアップロード後に「判定」
+    ボタンを押してください。</li>
+<li style="margin-bottom:1em;" align="left">ファイル画像の形式は<font color=red>「JPG」</font>、背景色は
+  <font color=red>「黒」</font>、文字は<font color=red>「白」</font>で作成してください。</li>
+<li style="margin-bottom:1em;" align="left">アップロードされた画像の特徴を解析してAIが数字の0～9いづれかを
+  自動判定します。</li>
+<li style="margin-bottom:1em;" align="left">チュートリアル簡易用の学習モデルのため、上記以外のルールで作成
+  した画像は正しく判定されません。</li>
+<li style="margin-bottom:1em;" align="left">画像サイズは28*28ピクセルにすると判定確率が高くなります。</li>
+<li style="margin-bottom:1em;" align="left">画像ファイルは複数同時に選択してアップロードすることができます。</li>
+</ol>
+</h4>
+</div>
+</div>
+<hr>
+<form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+<div style="display:inline-flex">
+<input type="file" name="files[]" multiple>
+</div>
+<input type="submit" class="btn btn-lg btn-danger" value="判定">
+{% csrf_token %}
+</form>
+
+{% if message %}
+<div class="alert alert-danger" role="alert">
+<h4><font color="red">{{message}}<br></font> </h4>
+</div>
+{% endif %}
+<hr>
+<h4><p style="margin-bottom:1em;">入力数字画像データ例</p></h4>
+
+<!-- 画像表示 -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="thumbnail">
+        <img src="{% static 'img/sample1.jpg' %}" width="45px" height="45px">
+      <div class="caption">数字(8)</div>
+    </div>
+  </div>
+  <div class="col-xs-3">
+      <div class="thumbnail">
+        <img src="{% static 'img/sample2.jpg' %}" width="45px" height="45px">
+      <div class="caption">数字(6)</div>
+    </div>
+  </div>
+  <div class="col-xs-3">
+      <div class="thumbnail">
+        <img src="{% static 'img/sample3.jpg' %}" width="45px" height="45px">
+      <div class="caption">数字(3)</div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 画像表示 -->
+</div>
+</div>
+{% endblock content %}

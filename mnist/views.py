@@ -7,12 +7,14 @@ import os
 
 #学習モデルのロード
 from keras.models import load_model
-model = load_model('C:\\<path>\\mnist.h5')
+current_dir = os.getcwd()
+model_path = current_dir + '\\model\\mnist.h5'
+model = load_model(model_path)
 graph = tf.get_default_graph()
 
 
-def upload(request):  
-    
+def upload(request):
+      
     #画像データの取得
     files = request.FILES.getlist("files[]")
 
@@ -47,8 +49,8 @@ def upload(request):
             result.append((src, label))
 
         context = {
-            'result': result
-           }
+            'result': result,
+        }
         return render(request, 'mnist/result.html', context)
     
     else:

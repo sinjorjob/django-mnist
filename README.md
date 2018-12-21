@@ -17,7 +17,7 @@ git clone https://github.com/sinjorjob/mnist_tutorial.git
 ※右上の「Clone or Download」→ 「Download ZIP」からダウンロードでもOKです。
 
 3. DOS画面よりセットアップコマンドを実行する。
-windows
+
 
 ```
 cd django-mnist-master
@@ -35,7 +35,6 @@ MacOS/Linuxでは動作確認していませんが、同様の手順で実装で
 
 5. 開発サーバを立ち上げてブラウザからURLを開く
 
-windows
 
 ```
 python manage.py runserver

@@ -2,7 +2,8 @@
 
 ディープラーニング＋DjangoでMNIST(手書き数字画像認識)を実際に動かして試せるサンプルアプリです。
 
-解説：（sinyのURL: https://sinyblog.com/django/ai_api_001/）
+解説：
+URL: https://sinyblog.com/django/ai_api_001/
 
 # 使い方
 
